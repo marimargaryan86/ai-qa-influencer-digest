@@ -1,0 +1,21 @@
+name: Daily influencer digest
+
+on:
+  workflow_dispatch:          # manual "Run workflow" button
+  # schedule:                 # uncomment to run on GitHub instead of the Claude scheduled task
+  #   - cron: "30 19 * * *"   # 23:30 Asia/Yerevan (UTC+4)
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python digest.py
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          TIMEZONE: Asia/Yerevan
