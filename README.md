@@ -34,8 +34,8 @@ python3 digest.py             # send to Telegram
 ```
 
 ## Scheduling
-- **Claude scheduled task** (current): runs daily at 23:30 Yerevan, clones this repo and runs `digest.py`.
-- **GitHub Actions** (alternative): `.github/workflows/digest.yml` — add the three secrets in
-  *Settings → Secrets and variables → Actions*, then uncomment the `schedule` block.
+- **GitHub Actions** (active): `.github/workflows/digest.yml` runs daily at 23:30 Yerevan (19:30 UTC).
+  Tokens are stored as repository secrets (*Settings → Secrets and variables → Actions*):
+  `TELEGRAM_TOKEN`, `TELEGRAM_CHAT_ID`, `APIFY_TOKEN`. Manual run: *Actions → Daily influencer digest → Run workflow*.
   Use only one scheduler at a time to avoid duplicate messages.
 - Any cron: `30 19 * * * cd /path/to/repo && python3 digest.py`
