@@ -2,8 +2,10 @@ name: Daily influencer digest
 
 on:
   workflow_dispatch:          # manual "Run workflow" button
-  schedule:
-    - cron: "30 19 * * *"     # daily 23:30 Asia/Yerevan (UTC+4)
+  # Scheduling is done by a Claude scheduled task (daily 23:30 Asia/Yerevan).
+  # To schedule on GitHub instead, uncomment (and pause the Claude task):
+  # schedule:
+  #   - cron: "30 19 * * *"
 
 jobs:
   digest:
